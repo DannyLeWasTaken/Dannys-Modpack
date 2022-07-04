@@ -27,49 +27,23 @@ onEvent("ponder.registry", (event)=>{
                 scene.showStructure();
                 scene.idle(10);
 
+                const centerBlockPos = util.grid.at(2, 0, 2);
+                const centerTop = util.vector.topOf(centerBlockPos);
+
                 scene.world.setBlock(fbl, "minecraft:enchanting_table", true);
                 scene
-                    .text(stt(4), "Enchanting tables enchant books", fbl)
+                    .text(stt(8), "Enchanting tables can enchant books, armor, weapons, and much more.", fbl)
                     .colored(PonderPalette.WHITE)
                     .placeNearTarget()
                     .attachKeyFrame();
                 
                 scene
-                    .showControls(stt(4), [fbl[0], fbl[1] + 1, fbl[2]], "down")
+                    .showControls(stt(8), centerBlockPos.above(2), "down")
                     .leftClick()
                     .withItem("book");
-                
-                
-                scene.idle(stt(4));
-                scene
-                    .text(stt(3), "armor")
-                    .colored(PonderPalette.WHITE)
-                    .placeNearTarget()
-                    .attachKeyFrame();
-                scene
-                    .showControls(stt(3), [fbl[0], fbl[1] + 1, fbl[2]], "down")
-                    .leftClick()
-                    .withItem("diamond_chestplate");
-                
-                
-                scene.idle(stt(4));
-                scene
-                    .text(stt(3), "or even items.")
-                    .colored(PonderPalette.WHITE)
-                    .placeNearTarget()
-                    .attachKeyFrame();
-                scene
-                    .showControls(stt(1), [fbl[0], fbl[1] + 1, fbl[2]], "down")
-                    .leftClick()
-                    .withItem("diamond_sword");
-                scene
-                    .showControls(stt(1), [fbl[0], fbl[1] + 1, fbl[2]], "down")
-                    .leftClick()
-                    .withItem("iron_hoe");
-                scene
-                    .showControls(stt(1), [fbl[0], fbl[1] + 1, fbl[2]], "down")
-                    .leftClick()
-                    .withItem("stone_shovel");
+
+                scene.idle(4);
+                scene.world.createItemEntity(centerTop.add(0, 0.5, 0), util.vector.of(-0.07, 0.4, 0), "book");
             }
         )
 });
