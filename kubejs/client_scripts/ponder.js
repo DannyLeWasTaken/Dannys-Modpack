@@ -28,13 +28,13 @@ onEvent("ponder.registry", (event)=>{
 
                 scene.world.setBlock([0,1,0], "minecraft:enchanting_table", true);
                 scene
-                    .text(tts(3), "Enchanting tables enchant items or blocks")
-                    .colored(PonderPallete.WHITE)
+                    .text(stt(3), "Enchanting tables enchant items or blocks")
+                    .colored(PonderPalette.WHITE)
                     .placeNearTarget()
                     .attachKeyFrame();
                 
                 scene
-                    .showControls(tts(3), [0,2,0], "down")
+                    .showControls(stt(3), [0,2,0], "down")
                     .leftClick()
                     .withItem("book");
             }
