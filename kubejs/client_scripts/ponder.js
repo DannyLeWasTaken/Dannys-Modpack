@@ -23,39 +23,35 @@ onEvent("ponder.registry", (event)=>{
             "enchanting_table",
             "Enchanting table usage",
             (scene, util) => {
-                fbl = [2.5,1,2.5] // Focus block location
                 scene.showStructure();
                 scene.idle(10);
 
                 const centerBlockPos = util.grid.at(2, 0, 2);
                 const centerTop = util.vector.topOf(centerBlockPos);
 
-                scene.world.setBlock(fbl, "minecraft:enchanting_table", true);
+                scene.world.setBlock(centerTop, "minecraft:enchanting_table", true);
                 scene
-                    .text(stt(5.5), "Enchanting tables can enchant books, armor, weapons, and much more.", fbl)
+                    .text(stt(4), "Enchanting tables can enchant books, armor, weapons, and much more.", centerBlockPos.above(2))
                     .colored(PonderPalette.WHITE)
                     .placeNearTarget()
                     .attachKeyFrame();
                 
                 scene
-                    .showControls(stt(2), centerBlockPos.above(2), "down")
+                    .showControls(stt(3), centerBlockPos.above(2), "down")
                     .leftClick()
-                    .withItem("book");
+                    .withItem("book")
+                    .withItem("diamond_armor")
+                    .withItem("iron_shovel");
 
-                scene.idle(stt(2));
+                scene.idle(stt(3));
+
+                scene
+                    .text(stt(4), "Adding enchanting tables within a 2 block radius of the table can increase the level of enchantments you could get", fbl)
+                    .colored(PonderPalette.WHITE)
+                    .placeNearTarget()
+                    .attachKeyFrame();
                 
-                scene
-                    .showControls(stt(1.5), centerBlockPos.above(2), "down")
-                    .leftClick()
-                    .withItem("diamond_chestplate");
-
-                scene.idle(stt(1.5));
-
-                scene
-                    .showControls(stt(1.5), centerBlockPos.above(2), "down")
-                    .leftClick()
-                    .withItem("iron_sword");
-                scene.idle(stt(2));
+                
             }
         )
 });
