@@ -32,30 +32,30 @@ onEvent("ponder.registry", (event)=>{
 
                 scene.world.setBlock(fbl, "minecraft:enchanting_table", true);
                 scene
-                    .text(stt(7), "Enchanting tables can enchant books, armor, weapons, and much more.", fbl)
+                    .text(stt(5.5), "Enchanting tables can enchant books, armor, weapons, and much more.", fbl)
                     .colored(PonderPalette.WHITE)
                     .placeNearTarget()
                     .attachKeyFrame();
                 
                 scene
-                    .showControls(stt(3), centerBlockPos.above(2), "down")
+                    .showControls(stt(2), centerBlockPos.above(2), "down")
                     .leftClick()
                     .withItem("book");
 
-                scene.idle(stt(3));
+                scene.idle(stt(2));
                 
                 scene
-                    .showControls(stt(2), centerBlockPos.above(2), "down")
+                    .showControls(stt(1.5), centerBlockPos.above(2), "down")
                     .leftClick()
                     .withItem("diamond_chestplate");
 
-                scene.idle(stt(2));
+                scene.idle(stt(1.5));
 
                 scene
-                    .showControls(stt(2), centerBlockPos.above(2), "down")
+                    .showControls(stt(1.5), centerBlockPos.above(2), "down")
                     .leftClick()
                     .withItem("iron_sword");
-                scene.idle(stt(4));
+                scene.idle(stt(2));
             }
         )
 });
