@@ -13,7 +13,7 @@ function stt(second) {
 
 onEvent('ponder.tag', (event)=> {
     // Experimenting with enchantment table
-    event.createTag("kubejs:vanilla_minecraft", "minecraft:grass", "Vanilla blocks", "Tutorial on using vanilla blocks", ["minecraft:enchanting_table"]);
+    event.createTag("kubejs:vanilla_minecraft", "minecraft:grass_block", "Vanilla blocks", "Tutorial on using vanilla blocks", ["minecraft:enchanting_table"]);
 });
 
 onEvent("ponder.registry", (event)=>{
@@ -23,20 +23,53 @@ onEvent("ponder.registry", (event)=>{
             "enchanting_table",
             "Enchanting table usage",
             (scene, util) => {
+                fbl = [2.5,1,2.5] // Focus block location
                 scene.showStructure();
                 scene.idle(10);
 
-                scene.world.setBlock([0,1,0], "minecraft:enchanting_table", true);
+                scene.world.setBlock(fbl, "minecraft:enchanting_table", true);
                 scene
-                    .text(stt(4), "Enchanting tables enchant books, weapons, or armor.", [0,1,0])
+                    .text(stt(4), "Enchanting tables enchant books", fbl)
                     .colored(PonderPalette.WHITE)
                     .placeNearTarget()
                     .attachKeyFrame();
                 
                 scene
-                    .showControls(stt(4), [0,2,0], "down")
+                    .showControls(stt(4), [fbl[0], fbl[1] + 1, fbl[2]], "down")
                     .leftClick()
                     .withItem("book");
+                
+                
+                scene.idle(stt(4));
+                scene
+                    .text(stt(3), "armor")
+                    .colored(PonderPalette.WHITE)
+                    .placeNearTarget()
+                    .attachKeyFrame();
+                scene
+                    .showControls(stt(3), [fbl[0], fbl[1] + 1, fbl[2]], "down")
+                    .leftClick()
+                    .withItem("diamond_chestplate");
+                
+                
+                scene.idle(stt(4));
+                scene
+                    .text(stt(3), "or even items.")
+                    .colored(PonderPalette.WHITE)
+                    .placeNearTarget()
+                    .attachKeyFrame();
+                scene
+                    .showControls(stt(1), [fbl[0], fbl[1] + 1, fbl[2]], "down")
+                    .leftClick()
+                    .withItem("diamond_sword");
+                scene
+                    .showControls(stt(1), [fbl[0], fbl[1] + 1, fbl[2]], "down")
+                    .leftClick()
+                    .withItem("iron_hoe");
+                scene
+                    .showControls(stt(1), [fbl[0], fbl[1] + 1, fbl[2]], "down")
+                    .leftClick()
+                    .withItem("stone_shovel");
             }
         )
 });
