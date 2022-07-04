@@ -1,0 +1,51 @@
+To refresh this file, delete it and run /reload command again! Last updated: Jul 3, 2022, 9:01:31 PM
+
+#mekanism:dirty/zinc
+- jaopca:mekanism_dirty.zinc
+
+#mekanism:clean/zinc
+- jaopca:mekanism_clean.zinc
+
+#mekanism:dirty
+- jaopca:mekanism_dirty.aluminum
+- jaopca:mekanism_dirty.nickel
+- jaopca:mekanism_dirty.silver
+- jaopca:mekanism_dirty.zinc
+- mekanism:dirty_iron
+- mekanism:dirty_gold
+- mekanism:dirty_osmium
+- mekanism:dirty_copper
+- mekanism:dirty_tin
+- mekanism:dirty_lead
+- mekanism:dirty_uranium
+
+#mekanism:dirty/aluminum
+- jaopca:mekanism_dirty.aluminum
+
+#mekanism:dirty/nickel
+- jaopca:mekanism_dirty.nickel
+
+#mekanism:clean
+- jaopca:mekanism_clean.aluminum
+- jaopca:mekanism_clean.nickel
+- jaopca:mekanism_clean.silver
+- jaopca:mekanism_clean.zinc
+- mekanism:clean_iron
+- mekanism:clean_gold
+- mekanism:clean_osmium
+- mekanism:clean_copper
+- mekanism:clean_tin
+- mekanism:clean_lead
+- mekanism:clean_uranium
+
+#mekanism:dirty/silver
+- jaopca:mekanism_dirty.silver
+
+#mekanism:clean/nickel
+- jaopca:mekanism_clean.nickel
+
+#mekanism:clean/aluminum
+- jaopca:mekanism_clean.aluminum
+
+#mekanism:clean/silver
+- jaopca:mekanism_clean.silver
