@@ -17,5 +17,27 @@ onEvent('ponder.tag', (event)=> {
 })
 
 onEvent("ponder.registry", (event)=>{
+    event
+        .create("minecraft:enchanting_table")
+        .scene(
+            "enchanting_table",
+            "Enchanting table usage",
+            (scene, util) => {
+                scene.showStructure();
+                scene.idle(10);
+
+                scene.world.setBlock([0,1,0], "minecraft:enchanting_table", true);
+                scene
+                    .text(tts(3), "Enchanting tables enchant items or blocks")
+                    .colored(PonderPallete.WHITE)
+                    .placeNearTarget()
+                    .attachKeyFrame();
+                
+                scene
+                    .showControls(tts(3), [0,2,0], "down")
+                    .leftClick()
+                    .withItem("book");
+            }
+        )
 })
 
