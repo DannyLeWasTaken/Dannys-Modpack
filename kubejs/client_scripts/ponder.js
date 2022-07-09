@@ -36,6 +36,7 @@ onEvent('ponder.tag', (event)=> {
     // Experimenting with enchantment table
     event.createTag("kubejs:vanilla_minecraft", "minecraft:grass_block", "Vanilla blocks", "Tutorial on using vanilla blocks", [
         "minecraft:enchanting_table",
+        "minecraft:obsidian",
         "minecraft:nether_portal",
         "minecraft:end_portal_frame"
     ]);
@@ -118,7 +119,7 @@ onEvent("ponder.registry", (event)=>{
 
 onEvent("ponder.registry", (event)=> {
     event
-        .create("minecraft:nether_portal")
+        .create("minecraft:obsidian")
         .scene(
             "nether_portal",
             "How to build a nether portal",
