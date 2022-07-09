@@ -14,7 +14,6 @@ function stt(second) {
 function fadeInBlock(scene, util, location, blockName) {
     const topLocation = util.vector.topOf(location); 
     scene.world.setBlocks(location, blockName);
-    scene.world.hideSection();
     let link = scene.world.showSection(location, Facing.DOWN);
     //scene.world.replaceBlocks(topLocation, "minecraft:air", true);
     //scene.world.moveSection(link, [0, -1, 0], 0);
