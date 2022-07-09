@@ -34,7 +34,10 @@ function fadeInBlock(scene, util, location, blockName, wait, waitTime) {
 
 onEvent('ponder.tag', (event)=> {
     // Experimenting with enchantment table
-    event.createTag("kubejs:vanilla_minecraft", "minecraft:grass_block", "Vanilla blocks", "Tutorial on using vanilla blocks", ["minecraft:enchanting_table"]);
+    event.createTag("kubejs:vanilla_minecraft", "minecraft:grass_block", "Vanilla blocks", "Tutorial on using vanilla blocks", [
+        "minecraft:enchanting_table",
+        "minecraft:nether_portal"
+    ]);
 });
 
 onEvent("ponder.registry", (event)=>{
@@ -70,23 +73,52 @@ onEvent("ponder.registry", (event)=>{
                 scene.idle(stt(5));
 
                 scene
-                    .text(stt(4), "Adding enchanting tables within a 2 block radius of the table can increase the level of enchantments you could get", centerBlockPos.above(2))
+                    .text(stt(2), "Adding enchanting tables within a 2 block radius of the table can increase the level of enchantments you could get", centerBlockPos.above(2))
                     .colored(PonderPalette.WHITE)
                     .placeNearTarget()
                     .attachKeyFrame();
+                
+                function BookLayer(yLevel) {
+                    // Book shelves
+                    for (let z = 1; z < 5; z++) {
+                        fadeInBlock(scene, util, [0, yLevel, z], "minecraft:bookshelf", true, 3);
+                    };
+                    for (let x = 1; x < 4; x++) {
+                        fadeInBlock(scene, util, [x, yLevel, 4], "minecraft:bookshelf", true, 3);
+                    }
+                    for (let z = 5; z > 0; z--) {
+                        fadeInBlock(scene, util, [4, yLevel, z], "minecraft:bookshelf", true, 3);
+                    };
+                }
 
-                // Book shelves
-                /*
-                for (let z = 1; z < 5; z++) {
-                    fadeInBlock(scene, util, [0, 1, z], "minecraft:bookshelf", true, 3);
-                };
-                for (let z = 1; z < 5; z++) {
-                    fadeInBlock(scene, util, [5, 1, z], "minecraft:bookshelf", true, 3);
-                };
-                */
+                BookLayer(1);
 
-                scene.idle(stt(5));
+                scene.idle(stt(3));
+
+                scene
+                    .text(stt(2), "Adding more layers can increase the level of enchantments you can go", centerBlockPos.above(2))
+                    .colored(PonderPalette.WHITE)
+                    .placeNearTarget()
+                    .attachKeyFrame();
+                
+                BookLayer(2);
+                BookLayer(3);
+                
+                scene
+                    .text(stt(3), "It's important to note that only 15 book shelves are needed to achieve the maximum enchantment level of 30", centerBlockPos.above(2))
+                    .colored(PonderPalette.WHITE)
+                    .placeNearTarget();
+                
+                scene.idle(stt(4));
+
             }
         );
+    event
+        .create("minecraft:nether_portal")
+        .scene(
+            "nether_portal",
+            "How to build a nether portal"
+            
+        )
 });
 
