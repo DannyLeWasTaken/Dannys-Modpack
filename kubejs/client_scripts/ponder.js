@@ -36,7 +36,8 @@ onEvent('ponder.tag', (event)=> {
     // Experimenting with enchantment table
     event.createTag("kubejs:vanilla_minecraft", "minecraft:grass_block", "Vanilla blocks", "Tutorial on using vanilla blocks", [
         "minecraft:enchanting_table",
-        "minecraft:nether_portal"
+        "minecraft:nether_portal",
+        "minecraft:end_portal_frame"
     ]);
 });
 
@@ -96,7 +97,7 @@ onEvent("ponder.registry", (event)=>{
                 scene.idle(stt(3));
 
                 scene
-                    .text(stt(2), "Adding more layers can increase the level of enchantments you can go", centerBlockPos.above(2))
+                    .text(stt(3), "Adding more layers can increase the level of enchantments you can go", centerBlockPos.above(2))
                     .colored(PonderPalette.WHITE)
                     .placeNearTarget()
                     .attachKeyFrame();
@@ -117,8 +118,15 @@ onEvent("ponder.registry", (event)=>{
         .create("minecraft:nether_portal")
         .scene(
             "nether_portal",
-            "How to build a nether portal"
-            
+            "How to build a nether portal",
+            (scene, util) => {
+                scene.showBasePlate();
+                scene.idle(10);
+                
+                for (let x=2; x<4; x++) {
+                    fadeInBlock([x, 1, 3], "minecraft:obsidian", true, 3);
+                }
+            }
         )
 });
 
