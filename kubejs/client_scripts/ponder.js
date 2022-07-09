@@ -10,19 +10,23 @@
 function stt(second) {
     return second * 20;
 };
-
-function fadeInBlock(scene, util, location, blockName) {
+/**
+ * 
+ * @param {*} scene 
+ * @param {*} util 
+ * @param {Vector3} location 
+ * @param {string} blockName 
+ * @param {float} wait 
+ * @param {float} waitTime 
+ * @return {null}
+ */
+function fadeInBlock(scene, util, location, blockName, wait = true, waitTime = 15) {
     const topLocation = util.vector.topOf(location); 
-    scene.world.setBlocks(location, blockName);
+    scene.world.setBlocks(location, blockName, 0);
     let link = scene.world.showSection(location, Facing.DOWN);
     //scene.world.replaceBlocks(topLocation, "minecraft:air", true);
     //scene.world.moveSection(link, [0, -1, 0], 0);
     scene.idle(15);
-}
-
-function fadeOutBlock(scene, location) {
-    let link = scene.world.showIndependentSelection(location, Facing.DOWN);
-    scene.world.hideIndependentSection(link, [0, 10, 0]);
 }
 
 onEvent('ponder.tag', (event)=> {
@@ -69,12 +73,17 @@ onEvent("ponder.registry", (event)=>{
                     .attachKeyFrame();
 
                 // Book shelves
-
-                scene.world.setBlocks([0, 1, 0, 0, 1, 4], "minecraft:bookshelf", false);
+                /*
+                for (let z = 1; z < 5; z++) {
+                    fadeInBlock(scene, util, [0, 1, z], "minecraft:bookshelf", true, 3);
+                };
+                for (let z = 1; z < 5; z++) {
+                    fadeInBlock(scene, util, [5, 1, z], "minecraft:bookshelf", true, 3);
+                };
+                */
 
                 scene.idle(stt(5));
-
             }
-        )
+        );
 });
 
