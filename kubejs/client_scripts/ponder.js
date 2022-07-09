@@ -114,6 +114,9 @@ onEvent("ponder.registry", (event)=>{
 
             }
         );
+});
+
+onEvent("ponder.registry", (event)=> {
     event
         .create("minecraft:nether_portal")
         .scene(
@@ -122,11 +125,18 @@ onEvent("ponder.registry", (event)=>{
             (scene, util) => {
                 scene.showBasePlate();
                 scene.idle(10);
-                
-                for (let x=2; x<4; x++) {
-                    fadeInBlock([x, 1, 3], "minecraft:obsidian", true, 3);
-                }
             }
         )
-});
+})
 
+onEvent("ponder.registry", (event)=> {
+    event
+        .create("minecraft:end_portal_frame")
+        .scene(
+            "end_portal_frame",
+            "How to build a end portal",
+            (scene, util) => {
+
+            }
+        );
+})
