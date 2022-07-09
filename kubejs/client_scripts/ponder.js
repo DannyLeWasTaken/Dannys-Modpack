@@ -31,11 +31,9 @@ function fadeInBlock(scene, util, location, blockName, wait, waitTime) {
     scene.idle(waitTime);
 };
 
-console.info('PONDER (2)');
 
 onEvent('ponder.tag', (event)=> {
     // Experimenting with enchantment table
-    console.info('PONDER (1)');
     event.createTag("kubejs:vanilla_minecraft", "minecraft:grass_block", "Vanilla blocks", "Tutorial on using vanilla blocks", ["minecraft:enchanting_table"]);
 });
 
