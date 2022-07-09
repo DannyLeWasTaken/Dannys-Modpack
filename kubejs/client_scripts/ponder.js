@@ -7,30 +7,35 @@
  * @param {int} second The amount of seconds
  * @returns int Returns seconds converted to ticks
  */
-function stt(second) {
+ function stt(second) {
     return second * 20;
 };
+
 /**
- * 
+ * Fades in blocks
  * @param {*} scene 
  * @param {*} util 
  * @param {Vector3} location 
  * @param {string} blockName 
  * @param {float} wait 
  * @param {float} waitTime 
- * @return {null}
  */
-function fadeInBlock(scene, util, location, blockName, wait = true, waitTime = 15) {
+function fadeInBlock(scene, util, location, blockName, wait, waitTime) {
+    wait = wait ?? true;
+    waitTime = waitTime ?? 15;
     const topLocation = util.vector.topOf(location); 
-    scene.world.setBlocks(location, blockName, 0);
+    scene.world.setBlocks(location, blockName);
     let link = scene.world.showSection(location, Facing.DOWN);
     //scene.world.replaceBlocks(topLocation, "minecraft:air", true);
     //scene.world.moveSection(link, [0, -1, 0], 0);
-    scene.idle(15);
-}
+    scene.idle(waitTime);
+};
+
+console.info('PONDER (2)');
 
 onEvent('ponder.tag', (event)=> {
     // Experimenting with enchantment table
+    console.info('PONDER (1)');
     event.createTag("kubejs:vanilla_minecraft", "minecraft:grass_block", "Vanilla blocks", "Tutorial on using vanilla blocks", ["minecraft:enchanting_table"]);
 });
 
