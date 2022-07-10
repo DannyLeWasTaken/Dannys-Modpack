@@ -28,5 +28,11 @@ class Block {
     FadeOutDown(scene, util, wait) {
         this.FadeOut(scene, util, Facing.DOWN);
     }
-    
+    SetState(scene, util, stateCallback, bParticles) {
+        bParticles = bParticles ?? false;
+        scene.world.modifyBlock(this.Position, stateCallback, bParticles)
+    }
+    SetNBT(scene, util, nbtCallback) {
+        scene.world.modifyTileNBT(this.Position, nbtCallback);
+    }
 }

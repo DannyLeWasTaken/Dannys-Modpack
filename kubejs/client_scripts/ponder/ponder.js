@@ -2,6 +2,8 @@
 
 // 20 ticks = 1 second
 
+
+
 /**
  * 
  * @param {int} second The amount of seconds
@@ -181,23 +183,29 @@ onEvent("ponder.registry", (event)=> {
                 const centerBlockPos = util.grid.at(2, 0, 2);
                 fadeInBlock(scene, util, centerBlockPos.above(1), "minecraft:end_portal_frame", true, 3);
                 scene
-                    .text(stt(2), "This is an end portal frame used to open the end dimension.", centerBlockPos.above(2))
+                    .text(stt(3), "This is an end portal frame used to open the end dimension.", centerBlockPos.above(1))
                     .colored(PonderPalette.WHITE)
                     .placeNearTarget()
                     .attachKeyFrame();
 
-                scene.idle(3);
+                scene.idle(4);
                 
                 scene
-                    .showControls(stt(3), centerBlockPos.above(2), "down")
+                    .showControls(stt(2), centerBlockPos.above(1), "down")
                     .leftClick()
                     .withItem("ender_eye");
+
+                scene.idle(stt(3));
+
+                scene.world.modifyBlock(centerBlockPos.above(1), (block)=>block.with("eye", "true"), false);
                 
                 scene
-                    .text(stt(3), "In order to activate it, left click with an eye of ender", centerBlockPos.above(2))
+                    .text(stt(3), "In order to activate it, left click with an eye of ender", centerBlockPos.above(1))
                     .colored(PonderPalette.WHITE)
                     .placeNearTarget()
                     .attachKeyFrame();
+
+                scene.idle(4)
                 
                 
 
