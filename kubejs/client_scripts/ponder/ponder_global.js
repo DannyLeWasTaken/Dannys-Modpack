@@ -19,5 +19,14 @@ class Block {
         scene.world.hideSection(this.Position, facingDirection);
         if (wait) scene.idle(wait);
     }
-
+    FadeInDown(scene, util, wait) {
+        this.FadeIn(scene, util, Facing.Down);
+    }
+    FadeOutUp(scene, util, wait) {
+        this.FadeOut(scene, util, Facing.UP);
+    }
+    FadeOutDown(scene, util, wait) {
+        this.FadeOut(scene, util, Facing.DOWN);
+    }
+    
 }
