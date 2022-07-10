@@ -12,7 +12,7 @@
 };
 
 /**
- * 
+ * Places down blocks and handles block state and NBT 
  * @param {*} scene
  * @param {*} util 
  * @param {Vector3} location 
@@ -23,10 +23,10 @@
 function setBlock(scene, util, location, blockName, blockStateCallback, nbtCallback) {
     scene.world.setBlocks(location, blockName);
     if (nbtCallback!=null) {
-        scene.world.modifyTileNBT();
+        scene.world.modifyTileNBT(nbtCallback);
     }
     if (blockStateCallback!=null) {
-        scene.world.modifyBlock(location, blockStateCallback);
+        scene.world.modifyBlock(location, blockStateCallback[0], blockStateCallback[1]);
     }
 }
 
@@ -58,7 +58,7 @@ function fadeInBlock(scene, util, location, blockName, wait, waitTime, blockStat
     wait = wait ?? true;
     waitTime = waitTime ?? 15;
     setBlock(scene, util, location, blockName, blockStateCallback, nbtCallback);
-    scene.world.showSelection(location, Facing.DOWN);
+    scene.world.showSection(location, Facing.DOWN);
     if (wait) {
         scene.idle(waitTime);
     }
@@ -174,18 +174,16 @@ onEvent("ponder.registry", (event)=> {
                 scene.idle(10);
                 // TO DO: Rotate the end portal blocks correctly
                 for (let z=1;z<4;z++) {
-                    fadeInBlock(scene, util, [0, 1, z], "minecraft:end_portal_frame", true, 3);
+                    fadeInBlock(scene, util, [0, 1, z], "minecraft:end_portal_frame", true, 3, [(block)=>block.with("facing", "west"), true]);
                 };
                 for (let x=1;x<4;x++) {
-                    fadeInBlock(scene, util, [x, 1, 4], "minecraft:end_portal_frame", true, 3);
+                    fadeInBlock(scene, util, [x, 1, 4], "minecraft:end_portal_frame", true, 3, [(block)=>block.with("facing", "south"), true]);
                 };
                 for (let z=3;z>0;z--) {
-                    fadeInBlock(scene, util, [4, 1, z], "minecraft:end_portal_frame", true, 3);
+                    fadeInBlock(scene, util, [4, 1, z], "minecraft:end_portal_frame", true, 3, [(block)=>block.with("facing", "east"), true]);
                 };
                 for (let x=3;x>0;x--) {
-                    fadeInBlock(scene, util, [x, 1, 0], "minecraft:end_portal_frame", true, 3, (nbt) => {
-                        nbt.
-                    });
+                    fadeInBlock(scene, util, [x, 1, 0], "minecraft:end_portal_frame", true, 3, [(block)=>block.with("facing", "north"), true]);
                 }
 
             }
