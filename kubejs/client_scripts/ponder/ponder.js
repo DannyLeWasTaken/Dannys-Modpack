@@ -2,7 +2,7 @@
 
 // 20 ticks = 1 second
 
-
+import PonderFramework from "ponder_global"
 
 /**
  * 
