@@ -137,6 +137,20 @@ onEvent("ponder.registry", (event)=> {
             "end_portal_frame",
             "How to build a end portal",
             (scene, util) => {
+                scene.showBasePlate();
+                scene.idle(10);
+                for (let z=1;z<4;z++) {
+                    fadeInBlock(scene, util, [0, 1, z], "minecraft:end_portal_frame", true, 3);
+                };
+                for (let x=1;x<4;x++) {
+                    fadeInBlock(scene, util, [x, 1, 4], "minecraft:end_portal_frame", true, 3);
+                };
+                for (let z=3;z>0;z--) {
+                    fadeInBlock(scene, util, [4, 1, z], "minecraft:end_portal_frame", true, 3);
+                };
+                for (let x=3;x>0;x--) {
+                    fadeInBlock(scene, util, [x, 1, 0], "minecraft:end_portal_frame", true, 3);
+                }
 
             }
         );
