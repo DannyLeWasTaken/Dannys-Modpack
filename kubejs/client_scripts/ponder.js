@@ -12,6 +12,25 @@
 };
 
 /**
+ * 
+ * @param {*} scene
+ * @param {*} util 
+ * @param {Vector3} location 
+ * @param {string} blockName 
+ * @param {function} blockStateCallback 
+ * @param {function} nbtCallback 
+ */
+function setBlock(scene, util, location, blockName, blockStateCallback, nbtCallback) {
+    scene.world.setBlocks(location, blockName);
+    if (nbtCallback!=null) {
+        scene.world.modifyTileNBT();
+    }
+    if (blockStateCallback!=null) {
+        scene.world.modifyBlock(location, blockStateCallback);
+    }
+}
+
+/**
  * Fades in blocks
  * @param {*} scene 
  * @param {*} util 
@@ -20,15 +39,29 @@
  * @param {float} wait 
  * @param {float} waitTime 
  */
-function fadeInBlock(scene, util, location, blockName, wait, waitTime) {
+function fadeInBlock(scene, util, location, blockName, wait, waitTime, blockStateCallback, nbtCallback) {
+    /*
     wait = wait ?? true;
     waitTime = waitTime ?? 15;
     const topLocation = util.vector.topOf(location); 
     scene.world.setBlocks(location, blockName);
+    if (nbt_callback!=null) {
+        scene.world.modifyTileNBT([2,3,3], nbt_callback);
+    }
+
     let link = scene.world.showSection(location, Facing.DOWN);
     //scene.world.replaceBlocks(topLocation, "minecraft:air", true);
     //scene.world.moveSection(link, [0, -1, 0], 0);
     scene.idle(waitTime);
+    */
+
+    wait = wait ?? true;
+    waitTime = waitTime ?? 15;
+    setBlock(scene, util, location, blockName, blockStateCallback, nbtCallback);
+    scene.world.showSelection(location, Facing.DOWN);
+    if (wait) {
+        scene.idle(waitTime);
+    }
 };
 
 
@@ -139,6 +172,7 @@ onEvent("ponder.registry", (event)=> {
             (scene, util) => {
                 scene.showBasePlate();
                 scene.idle(10);
+                // TO DO: Rotate the end portal blocks correctly
                 for (let z=1;z<4;z++) {
                     fadeInBlock(scene, util, [0, 1, z], "minecraft:end_portal_frame", true, 3);
                 };
@@ -149,7 +183,9 @@ onEvent("ponder.registry", (event)=> {
                     fadeInBlock(scene, util, [4, 1, z], "minecraft:end_portal_frame", true, 3);
                 };
                 for (let x=3;x>0;x--) {
-                    fadeInBlock(scene, util, [x, 1, 0], "minecraft:end_portal_frame", true, 3);
+                    fadeInBlock(scene, util, [x, 1, 0], "minecraft:end_portal_frame", true, 3, (nbt) => {
+                        nbt.
+                    });
                 }
 
             }
