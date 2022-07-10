@@ -64,6 +64,10 @@ function fadeInBlock(scene, util, location, blockName, wait, waitTime, blockStat
     }
 };
 
+function fadeOut(scene, util, location) {
+
+}
+
 
 onEvent('ponder.tag', (event)=> {
     // Experimenting with enchantment table
@@ -172,7 +176,33 @@ onEvent("ponder.registry", (event)=> {
             (scene, util) => {
                 scene.showBasePlate();
                 scene.idle(10);
-                // TO DO: Rotate the end portal blocks correctly
+
+                // Display usage with one end portal
+                const centerBlockPos = util.grid.at(2, 0, 2);
+                fadeInBlock(scene, util, centerBlockPos.above(1), "minecraft:end_portal_frame", true, 3);
+                scene
+                    .text(stt(2), "This is an end portal frame used to open the end dimension.", centerBlockPos.above(2))
+                    .colored(PonderPalette.WHITE)
+                    .placeNearTarget()
+                    .attachKeyFrame();
+
+                scene.idle(3);
+                
+                scene
+                    .showControls(stt(3), centerBlockPos.above(2), "down")
+                    .leftClick()
+                    .withItem("ender_eye");
+                
+                scene
+                    .text(stt(3), "In order to activate it, left click with an eye of ender", centerBlockPos.above(2))
+                    .colored(PonderPalette.WHITE)
+                    .placeNearTarget()
+                    .attachKeyFrame();
+                
+                
+
+                // Show portal structure
+
                 for (let z=1;z<4;z++) {
                     fadeInBlock(scene, util, [0, 1, z], "minecraft:end_portal_frame", true, 3, [(block)=>block.with("facing", "west"), false]);
                 };
