@@ -1,1 +1,11 @@
-{}
+{
+  "kubejs.ponder.tag.vanilla_minecraft": "Vanilla blocks",
+  "kubejs.ponder.tag.vanilla_minecraft.description": "Tutorial on using vanilla blocks",
+  "kubejs.ponder.enchanting_table.header": "Enchanting table usage",
+  "kubejs.ponder.enchanting_table.text_1": "Enchanting tables can enchant books, armor, weapons, and much more.",
+  "kubejs.ponder.enchanting_table.text_2": "Adding enchanting tables within a 2 block radius of the table can increase the level of enchantments you could get",
+  "kubejs.ponder.enchanting_table.text_3": "Adding more layers can increase the level of enchantments you can go",
+  "kubejs.ponder.enchanting_table.text_4": "It\u0027s important to note that only 15 book shelves are needed to achieve the maximum enchantment level of 30",
+  "kubejs.ponder.end_portal_frame.header": "How to build a end portal",
+  "kubejs.ponder.nether_portal.header": "How to build a nether portal"
+}
